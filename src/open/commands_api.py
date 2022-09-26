@@ -9,9 +9,10 @@ def open_in_code()->None:
 def go_to(path:str) -> None:
     """takes in path and opens it in terminal using cd"""
     print(f'cd {path}')
-    # return os.system(f'cd {path}')
+    return os.system(f"konsole --new-tab --hold -e /bin/bash cd {path}") #/bin/bash --rcfile <(echo "cd /;ls;echo hi | less")
+
     # subprocess.run(f'cd {path}', shell=True)
-    open_in_code()
+    # open_in_code()
 
 def open_in(ide:str)->None:
     """Opens cwd in named ide"""
