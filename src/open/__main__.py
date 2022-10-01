@@ -1,5 +1,7 @@
 from conf import _parse_project_db,store_project_path
 from commands_api import go_to
+import typer
+
 
 
 def add_project(path:str, alias=None):
@@ -27,5 +29,10 @@ def open_project(name:str)->str:
             print(f"Can't find the path for project: {name}. \n Make sure you have added it to the registry(see help docs).")
     
 
+def main():
+    # add_project('/home/bichwaa/Desktop/testy/gitpractice', alias='gitp')
+    pass
 
-add_project('/home/bichwaa/Desktop/testy/gitpractice', alias='gitp')
+
+if __name__ == "__main__":
+    typer.run(main)
