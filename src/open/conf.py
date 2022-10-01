@@ -19,8 +19,11 @@ sample config json file:
 """
 import json
 
-def add_project(path_dict:dict)->None:
-    """adds a new project path to json database"""
+def store_project_path(path_dict:dict)->None:
+    """
+    Takes a dictionary with only one item; a project alias for the key and its path as the value.
+    adds the new project path to json database.
+    """
     with open("projects.json", "r+") as outfile:
         try: #if a database of paths already exists in projects.json
             file_data = json.load(outfile)
@@ -33,7 +36,8 @@ def add_project(path_dict:dict)->None:
 
 def _parse_project_db()->dict:
     """ 
-    reads persistent project location json storage,  returns a dictionary of paths.
+    reads persisted 'project location' storage (a json file in the top directory),  
+    returns a dictionary of paths.
     If the json file is empty, an empty dictionary is returned.
     """
     with open("projects.json", "r+") as outfile:
