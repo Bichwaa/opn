@@ -5,7 +5,6 @@ def open_project(name:str)->str:
     paths_dict = _parse_project_db()
     for k,v in paths_dict.items():
         if k == name:
-            print("the path: ",v)
             return go_to(v)
         else:
             print(f"Can't find the path for project: {name}. \n Make sure you have added it to the registry(see help docs).")

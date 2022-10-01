@@ -1,5 +1,5 @@
 import os
-# import subprocess
+import subprocess
 
 def open_in_code()->None:
     """Opens cwd in vs-code"""
@@ -7,11 +7,11 @@ def open_in_code()->None:
     # return subprocess.run('code .', shell=True)
 
 def go_to(path:str) -> None:
-    """takes in path and opens it in terminal using cd"""
-    print(f'cd {path}')
-    return os.system(f"konsole --new-tab --hold -e /bin/bash cd {path}") #/bin/bash --rcfile <(echo "cd /;ls;echo hi | less")
-
-    # subprocess.run(f'cd {path}', shell=True)
+    """takes in path and opens it in terminal using os.chdir"""
+    print(f'changing directory to: {path}')
+    os.chdir(path)
+    os.system("/bin/bash")
+    subprocess.run(f"pwd")
     # open_in_code()
 
 def open_in(ide:str)->None:
