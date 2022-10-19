@@ -1,5 +1,5 @@
 from conf import _parse_project_db,store_project_path
-from commands_api import go_to
+from commands_api import go_to,open_in_code
 import typer
 
 
@@ -24,14 +24,19 @@ def open_project(name:str)->str:
     paths_dict = _parse_project_db()
     for k,v in paths_dict.items():
         if k == name:
-            return go_to(v)
+            go_to(v, cb=open_in_code)
+            # open_in_code()
+            return True
         else:
-            print(f"Can't find the path for project: {name}. \n Make sure you have added it to the registry(see help docs).")
+            continue
+    else:
+        print(f"Can't find the path for project: {name}. \n Make sure you have added it to the registry(see help docs).")
     
 
 def main():
     # add_project('/home/bichwaa/Desktop/testy/gitpractice', alias='gitp')
-    pass
+    open_project("gitp")
+    # pass
 
 
 if __name__ == "__main__":
