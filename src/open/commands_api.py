@@ -4,13 +4,11 @@ import subprocess
 def go_to(path:str, cb = None) -> None:
     """takes in path and opens it in terminal using os.chdir"""
     print(f'changing directory to: {path}')
-    # os.chdir(path)
-    subprocess.call(f'cd {path}', shell=True)
-    subprocess.call("pwd", shell=True)
+    subprocess.run('/bin/bash', cwd=path)
     if cb != None:
         print("calling callback...")
         cb()
-    # open_in_code()
+        print("callback called...")
 
 def open_in(ide:str)->None:
     """Opens cwd in named ide"""
@@ -19,8 +17,8 @@ def open_in(ide:str)->None:
 
 def open_in_code()->None:
     """Opens cwd in vs-code"""
-    # return os.system()
-    return subprocess.run('code .', shell=True)
+    subprocess.run("pwd",shell=True, stderr=subprocess.STDOUT)
+    subprocess.run('code .', shell=True)
 
 
 def start_server(commands:list[str])->None:

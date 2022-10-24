@@ -24,7 +24,7 @@ def open_project(name:str)->str:
     paths_dict = _parse_project_db()
     for k,v in paths_dict.items():
         if k == name:
-            go_to(v, cb=open_in_code)
+            go_to(v)
             # open_in_code()
             return True
         else:
@@ -36,6 +36,7 @@ def open_project(name:str)->str:
 def main():
     # add_project('/home/bichwaa/Desktop/testy/gitpractice', alias='gitp')
     open_project("gitp")
+    open_in_code()
     # pass
 
 
